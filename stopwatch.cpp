@@ -1,7 +1,7 @@
 
-#include "Stopwatch.h>
+#include "stopwatch.h"
 
 
-Stopwatch::Stopwatch(Qwidget *parent) : QWidget(parent) {
+Stopwatch::Stopwatch(QWidget *parent) : QWidget(parent) {
 
 }

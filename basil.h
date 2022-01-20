@@ -3,7 +3,7 @@
 
 
 #include <QWidget>
-#include <memory>
+
 
 namespace UI {
 	class Basil;
@@ -13,9 +13,10 @@ class Basil : public QWidget {
 	Q_OBJECT
 public:
 	Basil(QWidget *parent = nullptr);
+	~Basil();
 	
 private:
-	std::unique_ptr<UI::Basil> ui;
+	UI::Basil *ui;
 };
 
 

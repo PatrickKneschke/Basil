@@ -1,7 +1,6 @@
-TARGET  += basil
+TARGET  = basil
 
 TEMPLATE = app
-CONFIG  += release_debug
 QT		+= widgets
 
 DEFINES += QT_DEPRECATED_WARNINGS

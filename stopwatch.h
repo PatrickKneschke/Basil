@@ -7,7 +7,7 @@
 
 class Stopwatch : public QWidget {
 public:
-	Stopwatch(Qwidget *parent=nullptr);
+	Stopwatch(QWidget *parent=nullptr);
 };
 
 
