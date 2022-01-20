@@ -2,6 +2,7 @@
 #define UI_BASIL_H
 
 
+#include "stopwatch.h"
 #include <QFrame>
 #include <QGridLayout>
 #include <QHBoxLayout>
@@ -18,8 +19,7 @@ public:
 	void setupUI(QWidget *parent) {
 		mainLayout 			= new QHBoxLayout();
 		
-		stopwatch 			= new QFrame(parent); //placeholder
-		
+		stopwatch 			= new Stopwatch(parent);		
 		inputFrame 			= new QFrame(parent);
 		inputFrame->setLineWidth(3);
 		inputFrame->setFrameStyle(QFrame::Panel | QFrame::Raised);
@@ -85,7 +85,7 @@ public:
 	
 	QHBoxLayout *mainLayout;
 	
-	QFrame      *stopwatch;			// empty QFrame as placeholder
+	Stopwatch   *stopwatch;
 	QFrame		*inputFrame;
 	QVBoxLayout *inputLayout;
 	
