@@ -56,6 +56,7 @@ public:
 		progressLabel 		= new QLabel("0/n completed", progressFrame);
 		progressLabel->setAlignment(Qt::AlignCenter);
 		progressLabel->setFont(QFont("Arial", 12, QFont::Bold));
+		progressLabel->setVisible(false);
 
 		parent->setLayout(mainLayout);
 		mainLayout->addWidget(stopwatch,  2);

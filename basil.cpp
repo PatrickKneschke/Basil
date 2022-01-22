@@ -7,7 +7,7 @@ Basil::Basil(QWidget *parent) :
 	QWidget(parent), 
 	ui(new UI::Basil),
 	pomodoroCount(0),
-	takeBreak(false)
+	takeBreak(true)
 {
 	setMinimumSize(1080, 480);
 	ui->setupUI(this);
@@ -33,11 +33,16 @@ void Basil::setupConnections() {
 }
 
 
+void Basil::updateProgressLabel() {
+	ui->progressLabel->setText( QString::number(pomodoroCount) + " / " + QString::number(ui->pomodoroGoal->value()) + " completed!" );
+}
+
+
 void Basil::startSession() {
-		if(ui->pomodoroGoal->value() == 0)
+		if(ui->pomodoroGoal->value() == 0) {
+			reset();
 			return;
-		takeBreak = true;		
-		pomodoroCount = 0;
+		}
 	
 		ui->pomodoroMinutes->setReadOnly(true);
 		ui->shortBreakMinutes->setReadOnly(true);
@@ -45,6 +50,8 @@ void Basil::startSession() {
 		ui->pomodoroGoal->setReadOnly(true);
 		
 		ui->stopwatch->setTime(ui->pomodoroMinutes->value(), 0);
+		ui->progressLabel->setVisible(true);
+		updateProgressLabel();
 		
 		disconnect(ui->startButton, &QPushButton::clicked, 
 				   this,            &Basil::startSession);
@@ -52,6 +59,9 @@ void Basil::startSession() {
 
 
 void Basil::reset() {
+	pomodoroCount = 0;
+	takeBreak = true;
+
 	ui->pomodoroMinutes->setValue(0);
 	ui->pomodoroMinutes->setReadOnly(false);
 	ui->shortBreakMinutes->setValue(0);
@@ -62,7 +72,6 @@ void Basil::reset() {
 	ui->pomodoroGoal->setReadOnly(false);
 		
 	ui->stopwatch->setTime(0, 0);
-		
 	ui->startButton->setText("Start");
 	connect(ui->startButton, &QPushButton::clicked, 
 	        this,	         &Basil::startSession);
@@ -72,6 +81,7 @@ void Basil::reset() {
 void Basil::nextTask() {
 	if(takeBreak) {
 		++pomodoroCount;
+		updateProgressLabel();
 		if(pomodoroCount >= ui->pomodoroGoal->value()) {
 			reset();
 			return;

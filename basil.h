@@ -22,6 +22,7 @@ public slots:
 	
 private:
 	void setupConnections();
+	void updateProgressLabel();
 
 	UI::Basil *ui;	
 	int pomodoroCount;
