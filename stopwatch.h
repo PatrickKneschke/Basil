@@ -8,6 +8,7 @@
 
 
 class Stopwatch : public QWidget {
+	Q_OBJECT
 public:
 	Stopwatch(QWidget *parent=nullptr);
 

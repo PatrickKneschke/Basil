@@ -15,8 +15,17 @@ public:
 	Basil(QWidget *parent = nullptr);
 	~Basil();
 	
+public slots:
+	void startSession();
+	void nextTask();
+	void reset();
+	
 private:
-	UI::Basil *ui;
+	void setupConnections();
+
+	UI::Basil *ui;	
+	int pomodoroCount;
+	bool takeBreak;
 };
 
 

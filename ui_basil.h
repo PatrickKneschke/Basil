@@ -81,7 +81,7 @@ public:
 		inputLayout->addWidget(timeSetFrame,  3);
 		inputLayout->addWidget(goalFrame, 	  1);
 		inputLayout->addWidget(progressFrame, 1);
-	}	
+	}
 	
 	QHBoxLayout *mainLayout;
 	

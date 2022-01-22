@@ -38,9 +38,6 @@ void Stopwatch::toggleOnOff() {
 }
 
 
-void Stopwatch::timeout() {}
-
-
 void Stopwatch::paintEvent(QPaintEvent *event) {
 	static const QPoint pointer[4] = {
 			QPoint( 3,   3),
