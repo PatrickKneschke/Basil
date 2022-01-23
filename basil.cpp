@@ -11,6 +11,7 @@ Basil::Basil(QWidget *parent) :
 {
 	setMinimumSize(1080, 480);
 	ui->setupUI(this);
+	ui->setupPalettes();
 	setupConnections();
 }
 
@@ -53,6 +54,8 @@ void Basil::startSession() {
 		ui->progressLabel->setVisible(true);
 		updateProgressLabel();
 		
+		setPalette(ui->pomodoroPalette);
+		
 		disconnect(ui->startButton, &QPushButton::clicked, 
 				   this,            &Basil::startSession);
 }
@@ -73,6 +76,9 @@ void Basil::reset() {
 		
 	ui->stopwatch->setTime(0, 0);
 	ui->startButton->setText("Start");
+	
+	setPalette(QPalette());
+		
 	connect(ui->startButton, &QPushButton::clicked, 
 	        this,	         &Basil::startSession);
 }
@@ -87,14 +93,17 @@ void Basil::nextTask() {
 			return;
 		}
 		if(pomodoroCount % 3 == 0) {
+			setPalette(ui->longBreakPalette);
 			ui->stopwatch->setTime(ui->longBreakMinutes->value(), 0);
 		}
 		else {
+			setPalette(ui->shortBreakPalette);
 			ui->stopwatch->setTime(ui->shortBreakMinutes->value(), 0);
 		}
 		takeBreak = false;
 	}
 	else {
+		setPalette(ui->pomodoroPalette);
 		ui->stopwatch->setTime(ui->pomodoroMinutes->value(), 0);
 		takeBreak = true;
 	}

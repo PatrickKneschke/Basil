@@ -17,8 +17,8 @@ public:
 	
 public slots:
 	void startSession();
-	void nextTask();
 	void reset();
+	void nextTask();
 	
 private:
 	void setupConnections();

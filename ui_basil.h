@@ -7,6 +7,7 @@
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QPalette>
 #include <QPushButton>
 #include <QSpinBox>
 #include <QVBoxLayout>
@@ -84,6 +85,22 @@ public:
 		inputLayout->addWidget(progressFrame, 1);
 	}
 	
+	
+	void setupPalettes() {
+		pomodoroPalette.setColor(QPalette::Window, 	 QColor(190, 90, 90));
+		pomodoroPalette.setColor(QPalette::Light,    QColor(200, 100, 100));
+		pomodoroPalette.setColor(QPalette::Dark,     QColor(160, 60, 60));
+		
+		shortBreakPalette.setColor(QPalette::Window, QColor(90, 90, 190));
+		shortBreakPalette.setColor(QPalette::Light,  QColor(100, 100, 200));
+		shortBreakPalette.setColor(QPalette::Dark,   QColor(60, 60, 160));
+		
+		longBreakPalette.setColor(QPalette::Window, QColor(90, 190, 90));
+		longBreakPalette.setColor(QPalette::Light,  QColor(100, 200, 100));
+		longBreakPalette.setColor(QPalette::Dark,   QColor(60, 160, 60));
+	}
+	
+	
 	QHBoxLayout *mainLayout;
 	
 	Stopwatch   *stopwatch;
@@ -107,6 +124,10 @@ public:
 	QHBoxLayout *progressLayout;
 	QLabel		*progressLabel;
 	QPushButton *startButton;
+	
+	QPalette pomodoroPalette;
+	QPalette shortBreakPalette;
+	QPalette longBreakPalette;
 };
 
 } //UI
