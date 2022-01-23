@@ -39,9 +39,7 @@ void Basil::updateProgressLabel() {
 }
 
 
-void Basil::startSession() {
-	QSound::play("bell.wav");
-	
+void Basil::startSession() {	
 	if(ui->pomodoroGoal->value() == 0) {
 		reset();
 		return;
@@ -67,13 +65,9 @@ void Basil::reset() {
 	pomodoroCount = 0;
 	takeBreak = true;
 
-	ui->pomodoroMinutes->setValue(0);
 	ui->pomodoroMinutes->setReadOnly(false);
-	ui->shortBreakMinutes->setValue(0);
 	ui->shortBreakMinutes->setReadOnly(false);
-	ui->longBreakMinutes->setValue(0);
 	ui->longBreakMinutes->setReadOnly(false);
-	ui->pomodoroGoal->setValue(0);
 	ui->pomodoroGoal->setReadOnly(false);
 		
 	ui->stopwatch->setTime(0, 0);
@@ -86,7 +80,9 @@ void Basil::reset() {
 }
 
 
-void Basil::nextTask() {		
+void Basil::nextTask() {	
+	QSound::play("bell.wav");
+		
 	if(takeBreak) {
 		++pomodoroCount;
 		updateProgressLabel();
