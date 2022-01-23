@@ -15,6 +15,10 @@
 
 namespace UI {
 
+#define DEFAULT_POMODORO_TIME 		25
+#define DEFAULT_SHORTBREAK_TIME 	 5
+#define DEFAULT_LONGBREAK_TIME	 	25
+
 class Basil {
 public:
 	void setupUI(QWidget *parent) {
@@ -37,10 +41,13 @@ public:
 		timeSetLabel6 		= new QLabel("min", timeSetFrame);
 		pomodoroMinutes 	= new QSpinBox(timeSetFrame);
 		pomodoroMinutes->setRange(0, 60);
+		pomodoroMinutes->setValue(DEFAULT_POMODORO_TIME);
 		shortBreakMinutes 	= new QSpinBox(timeSetFrame);
 		shortBreakMinutes->setRange(0, 60);
+		shortBreakMinutes->setValue(DEFAULT_SHORTBREAK_TIME);
 		longBreakMinutes 	= new QSpinBox(timeSetFrame);
 		longBreakMinutes->setRange(0, 60);
+		longBreakMinutes->setValue(DEFAULT_LONGBREAK_TIME);
 		
 		goalFrame			= new QFrame(inputFrame);
 		goalFrame->setFrameStyle(QFrame::Box | QFrame::Plain);
