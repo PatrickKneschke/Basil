@@ -22,15 +22,15 @@ Basil::~Basil() {
 
 
 void Basil::setupConnections() {
-		connect(ui->stopwatch, &Stopwatch::timeout, 
-		        this,          &Basil::nextTask);
-		connect(ui->startButton, &QPushButton::clicked, 
-		        this,            &Basil::startSession);
-		connect(ui->startButton, &QPushButton::clicked, 
-				ui->stopwatch,   &Stopwatch::toggleOnOff);
-		connect(ui->startButton, &QPushButton::clicked, this, [&](){
-			ui->startButton->setText(ui->startButton->text()=="Pause" ? "Resume" : "Pause");
-		});
+	connect(ui->stopwatch, &Stopwatch::timeout, 
+	        this,          &Basil::nextTask);
+	connect(ui->startButton, &QPushButton::clicked, 
+	        this,            &Basil::startSession);
+	connect(ui->startButton, &QPushButton::clicked, 
+			ui->stopwatch,   &Stopwatch::toggleOnOff);
+	connect(ui->startButton, &QPushButton::clicked, this, [&](){
+		ui->startButton->setText(ui->startButton->text()=="Pause" ? "Resume" : "Pause");
+	});
 }
 
 
@@ -40,24 +40,26 @@ void Basil::updateProgressLabel() {
 
 
 void Basil::startSession() {
-		if(ui->pomodoroGoal->value() == 0) {
-			reset();
-			return;
-		}
+	QSound::play("bell.wav");
 	
-		ui->pomodoroMinutes->setReadOnly(true);
-		ui->shortBreakMinutes->setReadOnly(true);
-		ui->longBreakMinutes->setReadOnly(true);
-		ui->pomodoroGoal->setReadOnly(true);
+	if(ui->pomodoroGoal->value() == 0) {
+		reset();
+		return;
+	}
+	
+	ui->pomodoroMinutes->setReadOnly(true);
+	ui->shortBreakMinutes->setReadOnly(true);
+	ui->longBreakMinutes->setReadOnly(true);
+	ui->pomodoroGoal->setReadOnly(true);
 		
-		ui->stopwatch->setTime(ui->pomodoroMinutes->value(), 0);
-		ui->progressLabel->setVisible(true);
-		updateProgressLabel();
+	ui->stopwatch->setTime(ui->pomodoroMinutes->value(), 0);
+	ui->progressLabel->setVisible(true);
+	updateProgressLabel();
 		
-		setPalette(ui->pomodoroPalette);
+	setPalette(ui->pomodoroPalette);
 		
-		disconnect(ui->startButton, &QPushButton::clicked, 
-				   this,            &Basil::startSession);
+	disconnect(ui->startButton, &QPushButton::clicked, 
+			   this,            &Basil::startSession);
 }
 
 
@@ -84,7 +86,7 @@ void Basil::reset() {
 }
 
 
-void Basil::nextTask() {
+void Basil::nextTask() {		
 	if(takeBreak) {
 		++pomodoroCount;
 		updateProgressLabel();

@@ -1,7 +1,8 @@
 TARGET  = basil
 
 TEMPLATE = app
-QT		+= widgets
+QT		+= widgets 
+QT      += multimedia
 
 DEFINES += QT_DEPRECATED_WARNINGS
 

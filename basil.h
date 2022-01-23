@@ -3,6 +3,7 @@
 
 
 #include <QWidget>
+#include <QSound>
 
 
 namespace UI {
@@ -24,7 +25,7 @@ private:
 	void setupConnections();
 	void updateProgressLabel();
 
-	UI::Basil *ui;	
+	UI::Basil *ui;
 	int pomodoroCount;
 	bool takeBreak;
 };
